@@ -5,23 +5,22 @@ test('0010', async ({ page,baseURL,homePage,checkBoxPage }) => {
     await page.goto(`${baseURL}`);
     await homePage.clickCheckboxDempLink();
 
-    //expect(checkBoxPage.istitleIsDispalyed()).toBeTruthy();
-    console.log()
-    await checkBoxPage.clickOnCheckBoxckb1();
-    expect(checkBoxPage.isclickOnCheckBoxckb1Displayed()).toBeTruthy();
+    expect(await checkBoxPage.istitleIsDispalyed()).toBeTruthy();
 
-    expect(checkBoxPage.isCkb2disable1Displayed()).toBeTruthy();
+    await checkBoxPage.clickOnCheckBoxckb1();
+    expect(await checkBoxPage.isclickOnCheckBoxckb1Displayed()).toBeTruthy();
+
+    expect(await checkBoxPage.isCkb2disable1Displayed()).toBeTruthy();
     await checkBoxPage.clickCkc2();
 
-    expect(checkBoxPage.isCkb2IsEnabled()).toBeTruthy();
+    expect(await checkBoxPage.isCkb2IsEnabled()).toBeTruthy();
     await homePage.scrollToPosition(100);
 
     await checkBoxPage.clickSelectall();
-    expect(checkBoxPage.isCkb4IsEnabled()).toBeTruthy();
+    expect(await checkBoxPage.isCkb4IsChecked()).toBeTruthy();
 
     await checkBoxPage.clickUnSelectAll();
-    expect(checkBoxPage.ckb5IsEnable()).toBeTruthy();
-    await page.waitForTimeout(5000);
+    expect(await checkBoxPage.ckb5IsChecked()).toBeFalsy();
 
 
 

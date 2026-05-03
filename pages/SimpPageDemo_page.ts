@@ -11,7 +11,7 @@ export default class SimpPageDemo{
     }
 
     async text_enter_message (msg:  string){
-        await this.page.getByPlaceholder('Please enter your Message').type(msg);
+        await this.page.getByPlaceholder('Please enter your Message').fill(msg);
     }
 
     async btn_get_checked_value (){
@@ -19,15 +19,15 @@ export default class SimpPageDemo{
     }
 
     async verify_enter_message_is_visible (){
-        await this.page.locator("(//p[@class='mt-20'])[1]").isVisible();
+        return await this.page.locator("(//p[@class='mt-20'])[1]").isVisible();
     }
 
     async text_enter_firstNo(first_no : string){
-        await this.page.getByPlaceholder('Please enter first value').type(first_no);
+        await this.page.getByPlaceholder('Please enter first value').fill(first_no);
     }
 
     async text_enter_SecondNo(second_no : string){
-        await this.page.getByPlaceholder('Please enter second value').type(second_no);;
+        await this.page.getByPlaceholder('Please enter second value').fill(second_no);
     }
 
 
@@ -37,8 +37,7 @@ export default class SimpPageDemo{
     
     async verify_getSum(exp_sum: string){
 
-        const resultElement = await this.page.locator(`//p[text()='${exp_sum}']`);
-        const displayedValue = await resultElement.evaluate((el) => el.textContent);
+        const displayedValue = await this.page.locator("(//p[@class='mt-20'])[2]").textContent();
         return displayedValue ? displayedValue.trim() : ''; // Handle possible null value
     }
 

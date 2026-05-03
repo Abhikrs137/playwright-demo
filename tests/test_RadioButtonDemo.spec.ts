@@ -28,7 +28,7 @@ test('007 Disabled Checkbox', async ({ page, baseURL, homePage, radioButtonDemoP
   // Verifying that the radio button is Disabled or not.
   expect(await radioButtonDemoPage.isRadioButtonDisabled()).toBeFalsy();
 
-  radioButtonDemoPage.enableRadioButton();
+  await radioButtonDemoPage.enableRadioButton();
 
 //   // Verifying that the radio button is Enable or not.
 //   expect(await radioButtonDemoPage.isRadioButtonEnabled()).toBeTruthy();
@@ -42,6 +42,7 @@ test('008 Click on button to get the selected values from Gender and Age.', asyn
   await page.waitForLoadState('networkidle');
   await homePage.scrollToPosition(75);
   await radioButtonDemoPage.selectGenderMaleAndAge();
+  await radioButtonDemoPage.clickGetGenderAgeValueButton();
 
   // Comparing the value that will come when you click that radio button.
 

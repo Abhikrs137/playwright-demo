@@ -18,11 +18,11 @@ export default class RadioButtonDemoPage {
 
   // Functions
   async selectMaleRadioButton() {
-    await this.page.getByLabel(this.maleRadioButtonLabel.label).first().check();
+    await this.page.getByRole('radio', { name: this.maleRadioButtonLabel.label, exact: true }).first().check({ force: true });
   }
 
   async isMaleRadioButtonSelected() {
-    const isSelected = await this.page.getByLabel(this.maleRadioButtonLabel.label).first().isChecked();
+    const isSelected = await this.page.getByRole('radio', { name: this.maleRadioButtonLabel.label, exact: true }).first().isChecked();
     return isSelected;
   }
 
@@ -31,7 +31,7 @@ export default class RadioButtonDemoPage {
   }
 
   async getSelectedValueText() {
-    const element = await this.page.getByText(this.resultText.text);
+    const element = await this.page.locator('p').filter({ hasText: "Radio button" });
     const extractedText = await element.innerText();
     return extractedText;
   }
@@ -53,15 +53,15 @@ export default class RadioButtonDemoPage {
 
   async isRadioButtonEnabled() {
     const radioButtonElement = await this.page.locator(this.radioButton1.xpath);
-  return await radioButtonElement.isDisabled();
+    return await radioButtonElement.isEnabled();
   }
 
 
 
 
   async selectGenderMaleAndAge() {
-    await this.page.locator('div').filter({ hasText: this.genderRadioButtons.text }).getByLabel(this.maleRadioButtonLabel.label, { exact: true }).check();
-    await this.page.getByLabel(this.ageRadioButtonLabel.label).check();
+    await this.page.getByRole('radio', { name: this.maleRadioButtonLabel.label, exact: true }).nth(1).check({ force: true });
+    await this.page.getByRole('radio', { name: this.ageRadioButtonLabel.label }).check({ force: true });
   }
 
   async clickGetGenderAgeValueButton() {
@@ -71,13 +71,13 @@ export default class RadioButtonDemoPage {
   
 
   async getGenderValueText() {
-    const element = await this.page.locator('p').filter({ hasText: this.genderResult.text });
+    const element = await this.page.locator('p').filter({ hasText: this.genderResult.text }).last();
     const extractedText = await element.innerText();
     return extractedText;
   }
 
   async getAgeValueText() {
-    const element = await this.page.locator('p').filter({ hasText: this.ageResult.text });
+    const element = await this.page.locator('p').filter({ hasText: this.ageResult.text }).last();
     const extractedText = await element.innerText();
     return extractedText;
   }

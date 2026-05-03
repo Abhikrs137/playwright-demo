@@ -20,36 +20,36 @@ export default class HomePage {
   // Functions
 
   async clickCheckboxDempLink(){
-    await this.page.getByRole('link', this.checkboxDemoLink).click();
+    await this.page.goto('/selenium-playground/checkbox-demo');
   }
 
 
   async clickSimpleDemoForm() {
-    await this.page.getByRole('link', this.simpleDemoFormLink).click();
+    await this.page.goto('/selenium-playground/simple-form-demo');
   }
 
   async clickInputFormSubmit() {
-    await this.page.getByRole('link', this.inputFormSubmitLink).click();
+    await this.page.goto('/selenium-playground/input-form-demo');
   }
 
   async clickSelectDropdownList() {
-    await this.page.getByRole('link', this.selectDropdownListLink).click();
+    await this.page.goto('/selenium-playground/select-dropdown-demo');
   }
 
   async clickRadioButtonsDemo() {
-    await this.page.getByRole('link', this.radioButtonsDemoLink).click();
+    await this.page.goto('/selenium-playground/radiobutton-demo');
   }
 
   async clickDragAndDrop() {
-    await this.page.getByRole('link', this.dragAndDropLink).click();
+    await this.page.goto('/selenium-playground/drag-and-drop-demo');
   }
 
   async clickWindowPopupModal() {
-    await this.page.getByRole('link', this.windowPopupModalLink).click();
+    await this.page.goto('/selenium-playground/window-popup-modal-demo');
   }
 
   async clickDragAndDropSliders() {
-    await this.page.getByRole('link', this.dragAndDropSlidersLink).click();
+    await this.page.goto('/selenium-playground/drag-drop-range-sliders-demo');
   }
 
 

@@ -12,11 +12,14 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 2 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['html'],
+    ['allure-playwright'],
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    baseURL: "https://www.lambdatest.com/selenium-playground/",
-    headless: false,
+    baseURL: "https://www.testmuai.com/selenium-playground/",
+    headless: true,
     screenshot: "on",
     video: "retain-on-failure",
     trace: 'on-first-retry',

@@ -15,7 +15,9 @@ export default class CheckBoxPage {
     private ckb5="(//label[text()='Option 2'])[2]";
     private ckb6="(//label[text()='Option 3'])[2]";
     private ckb7="(//label[text()='Option 4'])[2]";
-    private dckb1 = "//body[1]/div[1]/div[1]/section[2]/div[1]/div[1]/div[1]/div[2]/div[2]/div[3]";
+    private ckb4Input="(//label[text()='Option 1'])[2]/preceding-sibling::input";
+    private ckb5Input="(//label[text()='Option 2'])[2]/preceding-sibling::input";
+    private disabledCheckbox = "(//input[@class='mr-10'])[3]";
     private selectAll = { name: 'Check All' };
     private unSelectAll = { name: 'Uncheck All' };
 
@@ -36,11 +38,11 @@ export default class CheckBoxPage {
     }
 
     async isclickOnCheckBoxckb1Displayed(){
-        return await this.page.innerText(this.title);
+        return await this.page.isVisible(this.ckb1IsClicked);
     }
 
     async isCkb2disable1Displayed(){
-        return await this.page.isDisabled(this.dckb1);
+        return await this.page.isDisabled(this.disabledCheckbox);
     }
 
     async clickCkc2(){
@@ -51,8 +53,8 @@ export default class CheckBoxPage {
         return await this.page.isEnabled(this.ckb2);
     }
 
-    async isCkb4IsEnabled(){
-        return await this.page.isEnabled(this.ckb4);
+    async isCkb4IsChecked(){
+        return await this.page.isChecked(this.ckb4Input);
     }
 
     async clickSelectall(){
@@ -62,8 +64,8 @@ export default class CheckBoxPage {
     async clickUnSelectAll(){
         await this.page.getByRole('button', this.unSelectAll).click();
     }
-    async ckb5IsEnable(){
-        return await this.page.isChecked(this.ckb5);
+    async ckb5IsChecked(){
+        return await this.page.isChecked(this.ckb5Input);
     }
 
 }

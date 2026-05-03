@@ -26,7 +26,6 @@ export default class DropdownDemo{
         const element = await this.page.waitForSelector("//p[@class='selected-value text-size-14']");
 
         if (element) {
-          const isVisible = await element.isVisible();
           return true
         } else {
           return false
@@ -36,8 +35,7 @@ export default class DropdownDemo{
    // page.waitForSelector("//p[@class='selected-value text-size-14']")
 
     async dayDisplayed(){
-        const displayedDay = (await this.page.locator("//p[@class='selected-value text-size-14']")).innerText();
-        return displayedDay;
+        return await this.page.locator(this.dropDown1).evaluate((select: HTMLSelectElement) => select.selectedOptions[0]?.textContent?.trim() || '');
     }
 
     async selectMultipleOptions(options: string[]) {

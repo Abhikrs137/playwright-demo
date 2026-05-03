@@ -3,18 +3,29 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:list": "playwright test --list",
+    "validate": "playwright test --list",
+    "precommit": "npm run validate",
+    "postcommit": "git log -1 --oneline",
+    "report": "playwright show-report",
+    "allure:generate": "allure generate ./allure-results --clean -o ./allure-report",
+    "allure:open": "allure open ./allure-report",
+    "prepare": "husky"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.39.0",
+    "@playwright/test": "^1.59.1",
     "@types/node": "^20.8.2",
     "allure-commandline": "^2.32.0",
     "allure-playwright": "^2.9.2",
-    "experimental-allure-playwright": "^0.0.3"
+    "husky": "^9.1.7"
   },
   "dependencies": {
-    "playwright": "^1.49.0"
+    "playwright": "^1.59.1"
   }
 }
